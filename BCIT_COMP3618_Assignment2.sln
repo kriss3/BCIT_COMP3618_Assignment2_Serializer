@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp", "WpfApp\WpfApp.csproj", "{42D61633-35FB-4206-81B9-31EE6CF82996}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{C6FE2CD5-C18D-4558-B08B-53D56583F601}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Worker", "Worker\Worker.csproj", "{94F33AB7-3EDA-453F-BA5B-8FFD5017894E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BusinesRules", "BusinesRules", "{6973C9C2-C604-4AA3-B91F-2D520D58A95A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +21,17 @@ Global
 		{42D61633-35FB-4206-81B9-31EE6CF82996}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42D61633-35FB-4206-81B9-31EE6CF82996}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42D61633-35FB-4206-81B9-31EE6CF82996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94F33AB7-3EDA-453F-BA5B-8FFD5017894E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94F33AB7-3EDA-453F-BA5B-8FFD5017894E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F33AB7-3EDA-453F-BA5B-8FFD5017894E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F33AB7-3EDA-453F-BA5B-8FFD5017894E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{42D61633-35FB-4206-81B9-31EE6CF82996} = {C6FE2CD5-C18D-4558-B08B-53D56583F601}
+		{94F33AB7-3EDA-453F-BA5B-8FFD5017894E} = {6973C9C2-C604-4AA3-B91F-2D520D58A95A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF6F2640-78CB-46A0-AEF2-E32469C9E87F}

@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
+        Title="BCIT 3618 Assignment 2 Krzysztof Szczurowski" Height="350" Width="525" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <Grid Margin="0,0,65.4,-0.2">
+        <Label x:Name="lblEmployeeId" Content="Employee Id:" HorizontalAlignment="Left" Margin="45,30,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblFirstName" Content="First Name:" HorizontalAlignment="Left" Margin="53,74,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblLastName" Content="Last Name:" HorizontalAlignment="Left" Margin="55,105,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblHomePhone" Content="Home Phone:" HorizontalAlignment="Left" Margin="42,170,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblNotes" Content="Notes:" HorizontalAlignment="Left" Margin="79,200,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="180,33,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="180,78,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="180,117,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="180,156,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="190"/>
+        
+        <TextBlock HorizontalAlignment="Left" 
+                   Margin="180,204,0,0" 
+                   TextWrapping="Wrap" 
+                   Text="TextBlock" 
+                   VerticalAlignment="Top" 
+                   RenderTransformOrigin="1.109,-0.697" 
+                   Height="96" 
+                   Width="190">
+            
+                
+            
+        </TextBlock>
         
     </Grid>
 </Window>
