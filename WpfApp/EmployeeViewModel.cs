@@ -12,14 +12,15 @@ namespace WpfApp
 {
     public class EmployeeViewModel : INotifyPropertyChanged
     {
-        private string _employeeId;
-        private string _firstName;
-        private string _lastName;
-        private string _homePhone;
-        private string _notes;
-        private bool _canShowXml;
+        private int _employeeId;
+        private string _firstName = String.Empty;
+        private string _lastName = String.Empty;
+        private string _homePhone = String.Empty;
+        private string _notes = String.Empty;
+        private bool _canShowXml = false;
+        private string _state = string.Empty;
 
-        public string EmployeeId
+        public int EmployeeId
         {
             get { return _employeeId; }
             set
@@ -91,6 +92,18 @@ namespace WpfApp
                 }
             }
         }
+        public string State
+        {
+            get { return _state; }
+            set
+            {
+                if (value != _state)
+                {
+                    _state = value;
+                    OnPropertyChanged("State");
+                }
+            }
+        }
 
         private Employee _employee;
         private ICommand _serializeCommand;
@@ -150,8 +163,9 @@ namespace WpfApp
         #region Private Methods
         private void DoSerialize(Employee emp)
         {
-            emp = new Employee { EmployeeId = int.Parse(EmployeeId), FirstName = FirstName, LastName = LastName, HomePhone = HomePhone, Notes = Notes};
+            emp = new Employee { EmployeeId = EmployeeId, FirstName = FirstName, LastName = LastName, HomePhone = HomePhone, Notes = Notes};
             Work.DoSerialize(emp);
+            State = "Finised Serializing!!!";
             if (_canShowXml)
                 ShowXml();
         }
@@ -160,7 +174,7 @@ namespace WpfApp
             _employee = Work.DoDeserialize();
             if (_employee != null)
             {
-                EmployeeId = _employee.EmployeeId.ToString();
+                EmployeeId = _employee.EmployeeId;
                 FirstName = _employee.FirstName;
                 LastName = _employee.LastName;
                 HomePhone = _employee.HomePhone;
@@ -174,17 +188,21 @@ namespace WpfApp
             //Check if xml file exists!!!
             var directoryName = new FileInfo(Assembly.GetExecutingAssembly().Location).DirectoryName;
             var filePath = $"{directoryName}\\EmployeeData.xml";
-            if(File.Exists(filePath))
+            if (File.Exists(filePath))
+            {
                 Process.Start("notepad", filePath);
+            }
+                
         }
         private void ClearFields()
         {
-            EmployeeId = string.Empty;
+            EmployeeId = 0;
             FirstName = string.Empty;
             LastName = string.Empty;
             HomePhone = string.Empty;
             Notes = string.Empty;
             CanShowXml = false;
+            State = String.Empty;
         }
         
         #endregion
