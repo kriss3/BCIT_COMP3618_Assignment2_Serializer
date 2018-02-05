@@ -8,6 +8,7 @@ namespace ViewModel
     /// Krzysztof Szczurowski;
     /// BCIT COMP 3618;
     /// Repo: https://github.com/kriss3/BCIT_COMP3618_Assignment2_Serializer.git
+    /// Comment: handling of button disabling/enabling depending on the state of the object is not handled yet;
     /// </summary>
     public class RelayCommand : ICommand
     {
