@@ -24,6 +24,8 @@ namespace ViewModel
         private string _notes = String.Empty;
         private bool _canShowXml = false;
         private string _state = string.Empty;
+        private int _noOfSubordinates;
+        private Manager _manager;
 
         public int EmployeeId
         {
@@ -109,18 +111,29 @@ namespace ViewModel
                 }
             }
         }
-        public Employee Employee
+        public int NoOfSubordinates
         {
-            get { return _employee; }
+            get { return _noOfSubordinates; }
             set
             {
-                if (value != _employee)
-                    _employee = value;
-                OnPropertyChanged("Employee");
+                if (value != _noOfSubordinates)
+                {
+                    _noOfSubordinates = value;
+                    OnPropertyChanged("NoOfSubordinates");
+                }
+            }
+        }
+        public Manager Manager
+        {
+            get { return _manager; }
+            set
+            {
+                if (value != _manager)
+                    _manager = value;
+                OnPropertyChanged("Manager");
             }
         }
 
-        private Employee _employee;
         private ICommand _serializeCommand;
         private ICommand _deserializeCommand;
         private ICommand _clearCommand;
@@ -143,7 +156,7 @@ namespace ViewModel
                 if (_serializeCommand == null)
                 {
                     _serializeCommand =
-                        new RelayCommand(x => DoSerialize(_employee), x => true);
+                        new RelayCommand(x => DoSerialize(_manager), x => true);
                 }
                 return _serializeCommand;
             }
@@ -173,33 +186,34 @@ namespace ViewModel
         #endregion
 
         #region Private Methods
-        private void DoSerialize(Employee emp)
+        private void DoSerialize(Manager _mgr)
         {
-            emp = new Employee { EmployeeId = EmployeeId, FirstName = FirstName, LastName = LastName, HomePhone = HomePhone, Notes = Notes};
-            Work.DoSerialize(emp);
-            State = "Finished Serializing!";
+            _mgr = new Manager { NoOfSubordinates = NoOfSubordinates, EmployeeId = EmployeeId, FirstName = FirstName, LastName = LastName, HomePhone = HomePhone, Notes = Notes};
+            Work.DoSerialize(_mgr);
+            State = "Finished Serializing Manager object !";
             if (_canShowXml)
                 ShowXml();
         }
-        private Employee DoDeserialize()
+        private Manager DoDeserialize()
         {
-            _employee = Work.DoDeserialize();
-            if (_employee != null)
+            _manager = Work.DoDeserialize();
+            if (_manager != null)
             {
-                EmployeeId = _employee.EmployeeId;
-                FirstName = _employee.FirstName;
-                LastName = _employee.LastName;
-                HomePhone = _employee.HomePhone;
-                Notes = _employee.Notes;
-                State = "Finished DeSerializing!";
+                EmployeeId = _manager.EmployeeId;
+                FirstName = _manager.FirstName;
+                LastName = _manager.LastName;
+                HomePhone = _manager.HomePhone;
+                Notes = _manager.Notes;
+                NoOfSubordinates = _manager.NoOfSubordinates;
+                State = "Finished DeSerializing Manager object !";
             }
-            return _employee;
+            return _manager;
         }
         private void ShowXml()
         {
             //Check if xml file exists!!!
             var directoryName = new FileInfo(Assembly.GetExecutingAssembly().Location).DirectoryName;
-            var filePath = $"{directoryName}\\EmployeeData.xml";
+            var filePath = $"{directoryName}\\ManagerData.xml";
             if (File.Exists(filePath))
             {
                 Process.Start("notepad", filePath);
@@ -215,6 +229,7 @@ namespace ViewModel
             Notes = string.Empty;
             CanShowXml = false;
             State = String.Empty;
+            NoOfSubordinates = 0;
         }
         
         #endregion

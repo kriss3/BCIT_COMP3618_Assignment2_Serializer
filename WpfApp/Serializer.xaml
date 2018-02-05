@@ -25,6 +25,7 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
@@ -34,43 +35,51 @@
         <Label x:Name="lblLastName" Grid.Column="1" Grid.Row="3" Content="Last Name:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="lblHomePhone" Grid.Column="1" Grid.Row="4" Content="Home Phone:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <Label x:Name="lblNotes" Grid.Column="1" Grid.Row="5" Content="Notes:" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.603,1.086"/>
+        <Label x:Name="lblSubordinates" Grid.Column="1" Grid.Row="6" Content="Subordinates:" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <TextBox x:Name="txtBoxEmpId" Grid.Column="2" Grid.Row="1" Text="{Binding EmployeeId, Mode=TwoWay}"  HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="txtBoxFirstName" Grid.Column="2" Grid.Row="2" Text="{Binding FirstName, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="txtBoxLastName" Grid.Column="2" Grid.Row="3" Text="{Binding LastName, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
         <TextBox x:Name="txtBoxHomePhone" Grid.Column="2" Grid.Row="4" Text="{Binding HomePhone, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
-        <TextBox x:Name="txtBoxNotes" Grid.Column="2" Grid.Row="5" Text="{Binding Notes, Mode=TwoWay}" HorizontalAlignment="Left" Height="151" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Margin="0,0.4,0,0"/>
+        <TextBox x:Name="txtBoxNotes" Grid.Column="2" Grid.Row="5" Text="{Binding Notes, Mode=TwoWay}" HorizontalAlignment="Left" Height="118" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Margin="0,0.4,0,0"/>
+        <TextBox x:Name="txtBoxSubordinates" Grid.Column="2" Grid.Row="6" Text="{Binding NoOfSubordinates, Mode=TwoWay}" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="219"/>
         <CheckBox x:Name="chkBoxXmlDoc"
-                  Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" 
+                  Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" 
                   IsChecked="{Binding CanShowXml}" 
                   Content="Open Serialized XML Document" 
                   HorizontalAlignment="Left" 
                   VerticalAlignment="Top"/>
         <Button x:Name="btnSerialize"
-                Grid.Column="1" Grid.Row="7"
+                Grid.Column="1" Grid.Row="8"
                 Command="{Binding SerializeCommand}"
                 Content="Serialize" 
                 HorizontalAlignment="Left"  
                 VerticalAlignment="Top" 
                 Width="75"/>
         <Button x:Name="btnDeserialize"
-                Grid.Column="2" Grid.Row="7"
+                Grid.Column="2" Grid.Row="8"
                 Command="{Binding DeserializeCommand}" 
                 Content="Deserialize" 
                 HorizontalAlignment="Right"  
                 VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btnClear"
-                Grid.Column="2" Grid.Row="7"
+                Grid.Column="2" Grid.Row="8"
                 Command="{Binding ClearCommand}" 
                 Content="Clear" 
                 HorizontalAlignment="Left"  
                 VerticalAlignment="Top" Width="75"/>
-        <DockPanel Grid.Column="0" Grid.Row="9" Grid.ColumnSpan="4">
+        <DockPanel Grid.Column="0" Grid.Row="10" Grid.ColumnSpan="4">
             <StatusBar DockPanel.Dock="Bottom">
-                <Label Foreground="Red" 
-                   Content="{Binding State}"
-                   VerticalAlignment="Top"
-                   HorizontalAlignment="Left"
-                   FontSize="11"/>
+                <StackPanel Orientation="Horizontal">
+                    <Label Content="Serializaton Status: "
+                           Grid.Column="1" Grid.Row="10"
+                           FontSize="10"/>
+                    <Label Grid.Column="2" Grid.Row="10"
+                           Content="{Binding State}" 
+                           HorizontalAlignment="Left" 
+                           VerticalAlignment="Top"
+                           Foreground="Red"
+                           FontSize="10"/>
+                </StackPanel>
             </StatusBar>
         </DockPanel>
     </Grid>

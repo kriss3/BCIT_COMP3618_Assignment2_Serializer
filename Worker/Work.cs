@@ -11,25 +11,24 @@ namespace Worker
     /// </summary>
     public class Work
     {
-        public static void DoSerialize(Employee emp)
+        public static void DoSerialize(Manager manager)
         {
-            using (var fs = new FileStream("EmployeeData.xml", FileMode.Create))
+            using (var fs = new FileStream("ManagerData.xml", FileMode.Create))
             {
-                XmlSerializer xSerializer = new XmlSerializer(typeof(Employee));
-                xSerializer.Serialize(fs, emp);
+                XmlSerializer xSerializer = new XmlSerializer(typeof(Manager));
+                xSerializer.Serialize(fs, manager);
             }
         }
 
-        public static Employee DoDeserialize()
+        public static Manager DoDeserialize()
         {
-            Employee myEmp = null;
-            using (var fs = new FileStream("EmployeeData.xml", FileMode.Open))
+            Manager manager = null;
+            using (var fs = new FileStream("ManagerData.xml", FileMode.Open))
             {
-                var xDSerialize = new XmlSerializer(typeof(Employee));
-                var dEmp = (Employee)xDSerialize.Deserialize(fs);
-                myEmp = dEmp;
+                var xDSerialize = new XmlSerializer(typeof(Manager));
+                manager = (Manager)xDSerialize.Deserialize(fs);
             }
-            return myEmp;
+            return manager;
         }
     }
 }
