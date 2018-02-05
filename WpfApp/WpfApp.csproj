@@ -62,8 +62,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="EmployeeViewModel.cs" />
-    <Compile Include="RelayCommand.cs" />
     <Compile Include="Serializer.xaml.cs">
       <DependentUpon>Serializer.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -96,6 +94,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ViewModel\ViewModel.csproj">
+      <Project>{4a2ff088-62c7-4aa1-baf1-fead832997f1}</Project>
+      <Name>ViewModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Worker\Worker.csproj">
       <Project>{94f33ab7-3eda-453f-ba5b-8ffd5017894e}</Project>
       <Name>Worker</Name>

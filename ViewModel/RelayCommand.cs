@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace WpfApp
+namespace ViewModel
 {
+    /// <summary>
+    /// Standard RelayCommand class implementation to handle UI Commands;;
+    /// Krzysztof Szczurowski;
+    /// BCIT COMP 3618;
+    /// Repo: https://github.com/kriss3/BCIT_COMP3618_Assignment2_Serializer.git
+    /// </summary>
     public class RelayCommand : ICommand
     {
         private Action<object> execute;

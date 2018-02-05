@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-
-namespace Worker
+﻿namespace Worker
 {
+    /// <summary>
+    /// Employee class to use to create Employee objects to Serialize/Deserialize;
+    /// Krzysztof Szczurowski;
+    /// BCIT COMP 3618;
+    /// Repo: https://github.com/kriss3/BCIT_COMP3618_Assignment2_Serializer.git
+    /// </summary>
     public class Employee
     {
         public int EmployeeId { get; set; }

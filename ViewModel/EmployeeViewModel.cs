@@ -3,15 +3,20 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Windows.Controls;
 using System.Windows.Input;
 using Worker;
 
-
-namespace WpfApp
+namespace ViewModel
 {
+    /// <summary>
+    /// ViewModel Class to satisfy MVVM pattern;
+    /// Krzysztof Szczurowski;
+    /// BCIT COMP 3618;
+    /// Repo: https://github.com/kriss3/BCIT_COMP3618_Assignment2_Serializer.git
+    /// </summary>
     public class EmployeeViewModel : INotifyPropertyChanged
     {
+        #region ViewModel State
         private int _employeeId;
         private string _firstName = String.Empty;
         private string _lastName = String.Empty;
@@ -104,17 +109,6 @@ namespace WpfApp
                 }
             }
         }
-
-        private Employee _employee;
-        private ICommand _serializeCommand;
-        private ICommand _deserializeCommand;
-        private ICommand _clearCommand;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
         public Employee Employee
         {
             get { return _employee; }
@@ -125,6 +119,23 @@ namespace WpfApp
                 OnPropertyChanged("Employee");
             }
         }
+
+        private Employee _employee;
+        private ICommand _serializeCommand;
+        private ICommand _deserializeCommand;
+        private ICommand _clearCommand;
+
+        #endregion
+
+        #region Events
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+        #endregion
+
+        #region Commands
         public ICommand SerializeCommand
         {
             get
@@ -159,13 +170,14 @@ namespace WpfApp
                 return _clearCommand;
             }
         }
+        #endregion
 
         #region Private Methods
         private void DoSerialize(Employee emp)
         {
             emp = new Employee { EmployeeId = EmployeeId, FirstName = FirstName, LastName = LastName, HomePhone = HomePhone, Notes = Notes};
             Work.DoSerialize(emp);
-            State = "Finised Serializing!!!";
+            State = "Finished Serializing!";
             if (_canShowXml)
                 ShowXml();
         }
@@ -179,10 +191,10 @@ namespace WpfApp
                 LastName = _employee.LastName;
                 HomePhone = _employee.HomePhone;
                 Notes = _employee.Notes;
+                State = "Finished DeSerializing!";
             }
             return _employee;
         }
-
         private void ShowXml()
         {
             //Check if xml file exists!!!

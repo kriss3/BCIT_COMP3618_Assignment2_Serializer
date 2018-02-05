@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfApp
+namespace ViewModel
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -23,6 +23,7 @@ namespace WpfApp
         public Serializer()
         {
             InitializeComponent();
+            DataContext = new EmployeeViewModel();
         }
     }
 }
